@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image: url(../assets/img/Windows95-RTM-Desktop\ copy.png);
+  background-image: url(../assets/img/3FNW1hn.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom left;
@@ -22,24 +22,26 @@ body {
 .status-bar {
   height: 31px;
   width: 100%;
-  background-color: rgb(17, 17, 130);
+  background-color: rgb(23, 23, 153);
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start; 
   align-items: center;
   /*margin: 0 6px 3px 6px;*/
   box-shadow: 1px 1px rgba(0, 0, 0, 0.164), -1px -1px rgba(245, 245, 245, 0.281);
 }
 .status-bar > img {
-  margin-left: 3px;
-  height: 17px;
+  width: 31px;
+  height: 31px;
 }
 .status-bar > p {
-  margin-left: 5px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 21px;
   font-family: 'VT323', monospace;
-  font-weight: bolder;
   color: white;
+
 }
+
 /* FUNCTION BAR */
 .function-bar {
   background-color: rgb(255, 255, 255);

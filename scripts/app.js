@@ -1,20 +1,3 @@
-// TODO Functions to Do:
-// // TODO F to handle 3 levels of gaming: -Beginner 9*9 10bombs  -Intermediate 16*16 40bombs -Expert 30*16 99bombs (use Object)
-// // TODO Function Reset (to use every time the game start and when user click on the button with the face)
-// // TODO Function to create random bombs position
-// // TODO Function to count how many bombs are around (this works just if firstClick = true and after bombs are place and before function to show the clicked cell and nearby)
-// // TODO Function to show the clicked cell and nearby
-// // TODO Function game lost
-
-
-//* When game is starting, all the cells have one class of covered
-//* The games have one array to handle where the bombs are 
-//* The position of the bombs is decided after the user click the first cell
-//* The first cell have always CellInfo.nBombsClose = 0
-//* The bombs position are randomly decided and the value is stored in the array of object (switch CellInfo.nBombsClose = 0 )
-//* From the bombs position, give a counter to the cells that are close to the bomb (this value starts always from 0 and show the bombs closer)
-//* If the cell counter is 0, when user click on it reveal all the one that are close there
-
 
 function init() {
   //* Variables

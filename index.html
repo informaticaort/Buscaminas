@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Windows 95 Minesweeper</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <script src="./scripts/app.js"></script>
+    <link rel="icon" href="./assets/img/pngegg.png" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+      @font-face{
+        font-family:'digital-clock-font';
+        src: url('./assets/img/Technology-Bold.ttf');
+        }
+    </style>
+  </head>
+  <body><!-- oncontextmenu="return false;">   no menú contextual del click derecho -->
+    <div class="game-wrapper">
+      <div class="status-bar">
+        
+        <p>Minesweeper</p>
+      </div>
+
+      <div class="function-bar">
+        <div class="dropdown">
+          <div class="dropBtn"><u>G</u>ame</div>
+          <div class="dropdown-content">
+            <div class="new-game">New Game</div>
+            <div id="line"></div>
+            <div class="content">Beginner</div>
+            <div class="content">Intermediate</div>
+            <div class="content">Expert</div>
+            <!-- <div class="content-audio">Audio</div> -->
+          </div>
+        </div>
+        <a
+          href="https://campus.ort.edu.ar/secundaria/almagro/informatica"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="link"
+          ><u>I</u>nfo Almagro</a
+        >
+      </div>
+      <div class="outputs-wrapper">
+        <div id="flags-monitor">0</div>
+        <div class="face-button"></div>
+        <div id="timer-monitor">0</div>
+      </div>
+      <!-- This is the grid that will receive the mined floor -->
+      <div class="grid-wrapper">
+        <div class="grid"></div>
+      </div>
+    </div>
+    <audio id="audio" src="assets/audio/MinesweeperGameOver.ogg"/>
+  </body>
+</html>

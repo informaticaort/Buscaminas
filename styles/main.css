@@ -7,7 +7,8 @@
 }
 
 body {
-  background-image: url(../assets/img/3FNW1hn.png);
+ /*Fondo de pantalla del juego*/
+  background-image: url(../assets/img/Fondo.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom left;
@@ -130,32 +131,39 @@ body {
   font-family:'digital-clock-font'
 }
 
+/*Cara feliz*/
 .face-button {
   cursor: default;
-  background-image: url("../assets/img/faces/facesmile.gif");
+  background-image: url("../assets/img/faces/feliz.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 40px;
   width: 40px;
 }
+
+/*Cara perdio*/
 .face-dead {
-  background-image: url("../assets/img/faces/facedead.gif");
+  background-image: url("../assets/img/faces/perdio.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 40px;
   width: 40px;
   cursor: pointer;
 }
+
+/*Cara gano*/
 .face-win {
-  background-image: url("../assets/img/faces/facewin.gif");
+  background-image: url("../assets/img/faces/gano.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 40px;
   width: 40px;
   cursor: default;
 }
+
+/*Cara uhhh */
 .face-ooh {
-  background-image: url("../assets/img/faces/faceooh.gif");
+  background-image: url("../assets/img/faces/uhh.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 40px;
@@ -222,64 +230,87 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*Bandera*/
 .game-wrapper > .grid-wrapper > .grid > .flagged {
-  background-image: url("../assets/img/bombflagged.gif");
+  background-image: url("../assets/img/Bandera.png");
   background-repeat: no-repeat;
   background-size: contain;
   cursor: default;
 }
+/*bomba*/
 .grid > .bomb {
-  background-image: url("../assets/img/bombrevealed.gif");
+  background-image: url("../assets/img/bomba.png");
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*1*/
 .uncoveredOne {
-  background-image: url(../assets/img/numbers/open1.gif);
+  background-image: url(../assets/img/numbers/1.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*2*/
 .uncoveredTwo {
-  background-image: url(../assets/img/numbers/open2.gif);
+  background-image: url(../assets/img/numbers/2.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*3*/
 .uncoveredThree {
-  background-image: url(../assets/img/numbers/open3.gif);
+  background-image: url(../assets/img/numbers/3.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*4*/
 .uncoveredFour {
-  background-image: url(../assets/img/numbers/open4.gif);
+  background-image: url(../assets/img/numbers/4.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*5*/
 .uncoveredFive {
-  background-image: url(../assets/img/numbers/open5.gif);
+  background-image: url(../assets/img/numbers/5.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*6*/
 .uncoveredSix {
-  background-image: url(../assets/img/numbers/open6.gif);
+  background-image: url(../assets/img/numbers/6.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*7*/
 .uncoveredSeven {
-  background-image: url(../assets/img/numbers/open7.gif);
+  background-image: url(../assets/img/numbers/7.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*8*/
 .uncoveredEight {
-  background-image: url(../assets/img/numbers/open8.gif);
+  background-image: url(../assets/img/numbers/8.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*Bomba cubierta*/
 .misflagged {
-  background-image: url(../assets/img/bombmisflagged.gif);
+  background-image: url(../assets/img/bomba-cubierta.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*Bomba clickeada*/
 .death {
-  background-image: url(../assets/img/bombdeath.gif);
+  background-image: url(../assets/img/bomba\ -\ perdio.png);
   background-repeat: no-repeat;
   background-size: contain;
 }

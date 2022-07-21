@@ -6,7 +6,7 @@
     <title>Windows 3.1 Minesweeper</title>
     <link rel="stylesheet" href="./styles/main.css" />
     <script src="./scripts/app.js"></script>
-    <link rel="icon" href="./assets/img/info.jpg" />
+    <link rel="icon" href="./assets/img/Logo.png" />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
       @font-face{
@@ -19,18 +19,18 @@
     <div class="game-wrapper">
       <div class="status-bar">
         <img src="./assets/img/mini.png" alt="info" class="mini-icon" />
-        <p>Minesweeper</p>
+        <p>BUSCAMINAS</p>
       </div>
 
       <div class="function-bar">
         <div class="dropdown">
-          <div class="dropBtn"><u>G</u>ame</div>
+          <div class="dropBtn"><u>J</u>ugar</div>
           <div class="dropdown-content">
-            <div class="new-game">New Game</div>
+            <div class="new-game">Nuevo Juego</div>
             <div id="line"></div>
-            <div class="content">Beginner</div>
-            <div class="content">Intermediate</div>
-            <div class="content">Expert</div>
+            <div class="content">Principiante</div>
+            <div class="content">Intermedio</div>
+            <div class="content">Avanzado</div>
             <!-- <div class="content-audio">Audio</div> -->
           </div>
         </div>
@@ -52,6 +52,8 @@
         <div class="grid"></div>
       </div>
     </div>
-    <audio id="audio" src="assets/audio/MinesweeperGameOver.ogg"/>
+
+    <!--Musica cuando pierde-->
+    <audio id="audio" src="assets/audio/MinesweeperGameOver.ogg"></audio>
   </body>
 </html>

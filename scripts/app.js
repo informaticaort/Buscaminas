@@ -43,7 +43,7 @@ function init() {
   function changeLevel(event) {        //this function change the UI and the logic of the game for every level
     if (event === null) {
       return
-    } else if (event.target.innerHTML === 'Intermediate') {
+    } else if (event.target.innerHTML === 'Intermedio') {
       width = 16
       height = 16
       cellCount = width * height
@@ -55,7 +55,7 @@ function init() {
       grid.style.width = '300px'
       gameWrapper.style.width = '300px'
       reset()
-    } else if (event.target.innerHTML === 'Expert') {
+    } else if (event.target.innerHTML === 'Avanzado') {
       width = 30
       height = 16
       cellCount = width * height

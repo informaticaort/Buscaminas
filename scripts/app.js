@@ -67,7 +67,7 @@ function init() {
       grid.style.width = '600px'
       gameWrapper.style.width = '600px'
       reset()
-    } else {
+    }else {
       width = 9
       height = 9
       cellCount = width * height

@@ -1,16 +1,16 @@
 
 function init() {
   //* Variables
-  const grid = document.querySelector('.grid') //Selecting the div
-  const audio = document.querySelector('#audio') //Selecting the audio
-  const resetBtn = document.querySelector('.face-button') //Selecting reset button
-  const flagsMonitor = document.querySelector('#flags-monitor') //Selecting flag monitor
-  const timerMonitor = document.querySelector('#timer-monitor')// Selecting timer monitor
+  const grid = document.querySelector('.grid') //selecciona el div
+  const audio = document.querySelector('#audio') //Selecciona el audio
+  const resetBtn = document.querySelector('.face-button') //Selecciona el boton de reset 
+  const flagsMonitor = document.querySelector('#flags-monitor') //Selecciona el monitor de banderas
+  const timerMonitor = document.querySelector('#timer-monitor')// Seleccciona el monitor del tiempo
   const newGame = document.querySelector('.new-game')
   const levels = document.querySelectorAll('.content')
   const gameWrapper = document.querySelector('.game-wrapper')
 
-  //*Testing with easy level
+  //Nivel fácil
   let width = 9
   let height = 9
   let cellCount = width * height
@@ -22,25 +22,25 @@ function init() {
   let timerId = null
   let cellsOpened = 0
 
-  //* Creating a Class to produce Object where I store info about the cell (if there is a bomb? or covered? etc)
-
+  // Clase para producir al objeto que almacena información de la celda (si tiene una bomba, si está cubierta, etc)
+  
   class CellInfo {
     constructor(idCell, cell, column, row, isCovered, haveBomb, haveFlag, nBombsClose) {
-      this.idCell = idCell           //same as i in createGrid
-      this.cell = cell                //this store the div in the system
-      this.column = column            //this track the column
-      this.row = row                    // this track the row
-      this.isCovered = isCovered            //t||f
-      this.haveBomb = haveBomb             //t||f
-      this.haveFlag = haveFlag            //t||f
-      this.nBombsClose = nBombsClose      //this will count the n of bombs around
+      this.idCell = idCell           
+      this.cell = cell                //almacena el div en el sistema
+      this.column = column            //columna
+      this.row = row                    // fila
+      this.isCovered = isCovered            
+      this.haveBomb = haveBomb             
+      this.haveFlag = haveFlag            
+      this.nBombsClose = nBombsClose      //cuenta el número de bombas alrededor
 
     }
   }
 
-  //* Functions
+  //* Funciones
 
-  function changeLevel(event) {        //this function change the UI and the logic of the game for every level
+  function changeLevel(event) {        // esta funcion cambia la UI y la lógica del juego en cada nivel
     if (event === null) {
       return
     } else if (event.target.innerHTML === 'Intermedio') {
@@ -83,7 +83,7 @@ function init() {
 
   }
 
-  function createGrid() {                   //This function create the cells in the grid with status of covered
+  function createGrid() {                   //esta función crea las celdas en la grilla con estado "cubierto"   
     changeLevel(null)
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
@@ -97,7 +97,7 @@ function init() {
     }
   }
 
-  function revealCellsAround(index) {         //To open the cells that are around one
+  function revealCellsAround(index) {         //para abrir las celdas alrededor de una    
     const cellsAround = whoIsCloseToMe(parseInt(index))
     for (let i = 0; i < cellsAround.length; i++) {
       if (cellsStatusInfo[cellsAround[i]].isCovered === true) {
@@ -107,7 +107,7 @@ function init() {
     }
   }
 
-  function uncoverCell(selected) {  //This function change the class of the clicked cell from covered to uncovered
+  function uncoverCell(selected) {  //esta función cambia la clase de una celda clickeada de cubierta a descubierta  
     if (cellsStatusInfo[selected].haveFlag === true) {
       return
     }
@@ -133,7 +133,7 @@ function init() {
     cellsOpened++
   }
 
-  function removeAllBombs() {            // This function removes all the bombs
+  function removeAllBombs() {            // Esta función remueve todas las bombas
     for (let i = 0; i < cellCount; i++) {
       cellsStatusInfo[i].nBombsClose = 0
       if (cellsStatusInfo[i].haveBomb === true) {
@@ -144,7 +144,7 @@ function init() {
 
   }
 
-  function randomBombPosition() {      //This function allocate randomly the bombs in the field
+  function randomBombPosition() {      //esta función ubica de forma random las bombas en el tablero
     let bombsPlaced = 0
     while (bombsPlaced < nBombs) {
       const randomIndex = Math.floor(Math.random() * cellCount)
@@ -158,7 +158,7 @@ function init() {
   }
 
 
-  function bombsCloseToMe(indexOfTheBomb) { // this function find how many bombs are close to every cell
+  function bombsCloseToMe(indexOfTheBomb) { // esta funcion encuentra cuántas bombas hay cerca de cada celda
     const nearby = whoIsCloseToMe(indexOfTheBomb)
     for (let i = 0; i < nearby.length; i++) {
       cellsStatusInfo[nearby[i]].nBombsClose++
@@ -166,47 +166,47 @@ function init() {
 
   }
 
-  function whoIsCloseToMe(index) {         // this function returns an array of cell close to the given index
-    const column = cellsStatusInfo[index].column    //these return me the column 
-    const row = cellsStatusInfo[index].row        //these return me the row 
+  function whoIsCloseToMe(index) {         // esta funcion retorna un array de celdas cercanas a la seleccionada
+    const column = cellsStatusInfo[index].column    //retorna la columna
+    const row = cellsStatusInfo[index].row        //retorna la fila
     let cellDistance
     const closeToMe = []
-    // up-left corner
+    // superior izquierda
     if (row > 0 && column > 0) {
       cellDistance = -(width + 1)
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
-    // up-center
+    // superior
     if (row > 0) {
       cellDistance = -(width)
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
-    //up-right
+    //superior derecha 
     if (row > 0 && column < width - 1) {
       cellDistance = -(width - 1)
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
-    //left
+    //izquierda
     if (column > 0) {
       cellDistance = - 1
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
-    //right
+    //derecha
     if (column < width - 1) {
       cellDistance = + 1
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
-    //down-left
+    //inferior izquierda
     if (row < height - 1 && column > 0) {
       cellDistance = width - 1
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
-    //down-center
+    //inferior
     if (row < height - 1) {
       cellDistance = width
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
-    //down-right
+    //inferior derecha
     if (row < height - 1 && column < width - 1) {
       cellDistance = width + 1
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
@@ -214,7 +214,7 @@ function init() {
     return closeToMe
   }
 
-  function addFlag(event) {            //this event add and remove flags
+  function addFlag(event) {            //este evento agrega o quita banderas
     event.preventDefault()
     const selected = event.target.dataset.id
     if (cellsStatusInfo[selected].isCovered === true) {
@@ -231,13 +231,13 @@ function init() {
       flagsMonitor.innerHTML = nFlags
     }
   }
-  function misflagged(selected) {      // set UI to misflagged
+  function misflagged(selected) {      // retiro de bandera
     cellsStatusInfo[selected].cell.classList.remove('flagged')
     cellsStatusInfo[selected].cell.classList.remove('covered')
     cellsStatusInfo[selected].cell.classList.add('misflagged')
   }
 
-  function numbersAndEmptySpaces() {      //this manage the UI of the empty cells bombs and numbers 
+  function numbersAndEmptySpaces() {      // esta función maneja lo que pasa cuando se hace click en una celda vacia   
     for (let i = 0; i < cellCount; i++) {
       switch (cellsStatusInfo[i].nBombsClose) {
         case 0:
@@ -280,7 +280,7 @@ function init() {
 
   }
 
-  function clickedOnBomb(selected) {         //this manage when the user click on a bomb
+  function clickedOnBomb(selected) {         //esta función maneja lo que sucede cuando se encuentra una bomba   
     cellsStatusInfo[selected].cell.classList.remove('bomb')
     cellsStatusInfo[selected].cell.classList.add('death')
     audio.volume = 0.08
@@ -294,31 +294,31 @@ function init() {
         cellsStatusInfo[i].isCovered = false
         cellsStatusInfo[i].cell.classList.remove('covered')
       }
-      //all the cells became not clickable
+      //todas las celdas se convierten a no clickeables
       cellsStatusInfo[i].cell.classList.add('disabled')
 
     }
-    // stop the timer
+    // prar el temporizador
     timerStop()
-    // change face
+    // cambiar cara
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-dead')
   }
 
-  function timerStart() {     //handle the timer when start
+  function timerStart() {     //inicio del contador
     timerId = setInterval(() => {
       timerMonitor.innerHTML++
     }, 1000)
   }
-  function timerStop() {  //handle the timer when stop
+  function timerStop() {  //detención del contador
     clearInterval(timerId)
     timerId = null
   }
-  function timerReset() {    //to reset the timer
+  function timerReset() {    //reset el timer
     timerStop()
     timerMonitor.innerHTML = 0
   }
-  function reset() {         //to reset the game (only the grid)
+  function reset() {         // resetea el juego (solo la grilla)
     timerReset()
     nFlags = nBombs
     flagsMonitor.innerHTML = nFlags
@@ -353,7 +353,7 @@ function init() {
 
   }
 
-  function game(event) {            //this handle each click of the game
+  function game(event) {            //esta función maneja cada click en el juego
     const selected = event.target.dataset.id
     uncoverCell(selected)
     numbersAndEmptySpaces()
@@ -366,7 +366,6 @@ function init() {
       resetBtn.classList.add('face-win')
     }
   }
-  //! to implement better UI with shadows in the box
   function oohFaceDown(event) {
     event.preventDefault()
     resetBtn.classList.remove('face-button')

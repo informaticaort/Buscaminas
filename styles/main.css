@@ -226,7 +226,6 @@ body {
 }
 .uncovered {
   background-image: url(../assets/img/numbers/notchecked.gif);
-
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -234,6 +233,13 @@ body {
 /*Bandera*/
 .game-wrapper > .grid-wrapper > .grid > .flagged {
   background-image: url("../assets/img/Bandera.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: default;
+}
+/*signo de interrogación*/
+.game-wrapper > .grid-wrapper > .grid > .question {
+  background-image: url("../assets/img/question.png");
   background-repeat: no-repeat;
   background-size: contain;
   cursor: default;

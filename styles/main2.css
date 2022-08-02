@@ -238,6 +238,15 @@ body {
   background-size: contain;
   cursor: default;
 }
+
+/*signo de interrogación*/
+.game-wrapper > .grid-wrapper > .grid > .question {
+  background-image: url("../assets/img/question.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: default;
+}
+
 /*bomba*/
 .grid > .bomb {
   background-image: url("../assets/img/Bombas.jpg");

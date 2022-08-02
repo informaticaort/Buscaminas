@@ -25,14 +25,15 @@ function init() {
   // Clase para producir al objeto que almacena información de la celda (si tiene una bomba, si está cubierta, etc)
   
   class CellInfo {
-    constructor(idCell, cell, column, row, isCovered, haveBomb, haveFlag, nBombsClose) {
+    constructor(idCell, cell, column, row, isCovered, haveBomb, haveFlag, nBombsClose,haveQuestion) {
       this.idCell = idCell           
       this.cell = cell                //almacena el div en el sistema
       this.column = column            //columna
       this.row = row                    // fila
       this.isCovered = isCovered            
       this.haveBomb = haveBomb             
-      this.haveFlag = haveFlag            
+      this.haveFlag = haveFlag 
+      this.haveQuestion= haveQuestion           
       this.nBombsClose = nBombsClose      //cuenta el número de bombas alrededor
 
     }
@@ -66,6 +67,18 @@ function init() {
       grid.style.gridTemplateRows = 'repeat(16, 1fr)'
       grid.style.width = '600px'
       gameWrapper.style.width = '600px'
+      reset()
+    } else if (event.target.innerHTML === 'Custom') {
+      width = 5
+      height = 5
+      cellCount = width * height
+      nBombs = 2
+      nFlags = nBombs
+      flagsMonitor.innerHTML = nFlags
+      grid.style.gridTemplateColumns = 'repeat(5, 1fr)'
+      grid.style.gridTemplateRows = 'repeat(5, 1fr)'
+      grid.style.width = '300px'
+      gameWrapper.style.width = '300px'
       reset()
     }else {
       width = 9
@@ -108,7 +121,8 @@ function init() {
   }
 
   function uncoverCell(selected) {  //esta función cambia la clase de una celda clickeada de cubierta a descubierta  
-    if (cellsStatusInfo[selected].haveFlag === true) {
+    /*if (cellsStatusInfo[selected].haveFlag === true) {*/
+    if (cellsStatusInfo[selected].haveQuestion === true) {
       return
     }
       
@@ -214,23 +228,54 @@ function init() {
     return closeToMe
   }
 
+  
+
   function addFlag(event) {            //este evento agrega o quita banderas
     event.preventDefault()
     const selected = event.target.dataset.id
+    console.log(nFlags)
     if (cellsStatusInfo[selected].isCovered === true) {
       if (cellsStatusInfo[selected].haveFlag === false) {
         cellsStatusInfo[selected].cell.classList.add('flagged')
         cellsStatusInfo[selected].haveFlag = true
         nFlags--
-
+        console.log(nFlags)
+        console.log(cellsStatusInfo[selected].cell.classList)
       } else {
+        
         cellsStatusInfo[selected].cell.classList.remove('flagged')
         cellsStatusInfo[selected].haveFlag = false
-        nFlags++
+        nFlags+2
+        //interrogación
+        cellsStatusInfo[selected].cell.classList.add('question')
+        cellsStatusInfo[selected].haveQuestion = true
+        //nFlags++ funciona pero sima despues de la bandera
+        console.log(cellsStatusInfo[selected].cell.classList)
+        
       }
-      flagsMonitor.innerHTML = nFlags
+      // remover interrogación
+      if (cellsStatusInfo[selected].isCovered === true 
+        && cellsStatusInfo[selected].haveFlag === true 
+        && cellsStatusInfo[selected].haveQuestion == true) {
+          
+          console.log(nFlags)
+          cellsStatusInfo[selected].cell.classList.remove('question')
+          cellsStatusInfo[selected].haveQuestion = false
+          cellsStatusInfo[selected].cell.classList.remove('flagged')
+          cellsStatusInfo[selected].haveFlag = false
+          cellsStatusInfo[selected].cell.classList.add('covered')
+          cellsStatusInfo[selected].isCovered = true;
+          console.log("asd")
+          console.log(cellsStatusInfo[selected].cell.classList)
+          nFlags+=2
+      }
+      
     }
+    flagsMonitor.innerHTML = nFlags
+
   }
+
+  
   function misflagged(selected) {      // retiro de bandera
     cellsStatusInfo[selected].cell.classList.remove('flagged')
     cellsStatusInfo[selected].cell.classList.remove('covered')
@@ -303,6 +348,7 @@ function init() {
     // cambiar cara
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-dead')
+    alert("Perdiste")
   }
 
   function timerStart() {     //inicio del contador
@@ -362,8 +408,14 @@ function init() {
     }
     if (cellsOpened === cellCount - nBombs) {
       timerStop()
+      alert('Ganaste /n tiempo: '+timerMonitor.innerHTML)   // Mensaje juego ganado
+     
+      for (let i = 0; i < cellCount; i++) {  //todas las celdas se convierten a no clickeables
+        cellsStatusInfo[i].cell.classList.add('disabled')
+      }
       resetBtn.classList.remove('face-button')
       resetBtn.classList.add('face-win')
+      
     }
   }
   function oohFaceDown(event) {

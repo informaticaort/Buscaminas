@@ -427,13 +427,14 @@ function init() {
     event.target.classList.remove('covered')
     event.target.classList.add('clicked')
 
-  }
-  function oohFaceUp(event) {
-    resetBtn.classList.remove('face-ooh')
     resetBtn.classList.add('face-button')
     event.target.classList.remove('clicked')
     event.target.classList.add('covered')
 
+
+  }
+  function oohFaceUp(event) {
+    resetBtn.classList.remove('face-ooh')
   }
 
 
@@ -447,9 +448,9 @@ function init() {
   cellsStatusInfo.forEach(cells =>
     cells.cell.addEventListener('click', game))
   cellsStatusInfo.forEach(cells =>
-    cells.cell.addEventListener('mousedown', oohFaceDown))
+    cells.cell.addEventListener('mousedown', oohFaceDown))//
   cellsStatusInfo.forEach(cells =>
-    cells.cell.addEventListener('mouseup', oohFaceUp))
+    cells.cell.addEventListener('mouseup', oohFaceUp))  //
   cellsStatusInfo.forEach(cells =>
     cells.cell.addEventListener('contextmenu', addFlag))
   resetBtn.addEventListener('click', reset)

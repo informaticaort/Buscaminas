@@ -53,8 +53,8 @@ function init() {
       flagsMonitor.innerHTML = nFlags
       grid.style.gridTemplateColumns = 'repeat(16, 1fr)'
       grid.style.gridTemplateRows = 'repeat(16, 1fr)'
-      grid.style.width = '300px'
-      gameWrapper.style.width = '300px'
+      grid.style.width = '325px'
+      gameWrapper.style.width = '325px'
       reset()
     } else if (event.target.innerHTML === 'Avanzado') {
       width = 30
@@ -228,51 +228,53 @@ function init() {
     return closeToMe
   }
 
-  
 
   function addFlag(event) {            //este evento agrega o quita banderas
     event.preventDefault()
     const selected = event.target.dataset.id
-    console.log(nFlags)
-    if (cellsStatusInfo[selected].isCovered === true) {
-      if (cellsStatusInfo[selected].haveFlag === false) {
-        cellsStatusInfo[selected].cell.classList.add('flagged')
-        cellsStatusInfo[selected].haveFlag = true
-        nFlags--
-        console.log(nFlags)
-        console.log(cellsStatusInfo[selected].cell.classList)
-      } else {
-        
-        cellsStatusInfo[selected].cell.classList.remove('flagged')
-        cellsStatusInfo[selected].haveFlag = false
-        nFlags+2
-        //interrogación
-        cellsStatusInfo[selected].cell.classList.add('question')
-        cellsStatusInfo[selected].haveQuestion = true
-        //nFlags++ funciona pero sima despues de la bandera
-        console.log(cellsStatusInfo[selected].cell.classList)
-        
-      }
-      // remover interrogación
-      if (cellsStatusInfo[selected].isCovered === true 
-        && cellsStatusInfo[selected].haveFlag === true 
-        && cellsStatusInfo[selected].haveQuestion == true) {
-          
+
+    if(nFlags>0){
+      console.log(nFlags)
+      if (cellsStatusInfo[selected].isCovered === true) {
+        if (cellsStatusInfo[selected].haveFlag === false) {
+          cellsStatusInfo[selected].cell.classList.add('flagged')
+          cellsStatusInfo[selected].haveFlag = true
+          nFlags-=1
           console.log(nFlags)
-          cellsStatusInfo[selected].cell.classList.remove('question')
-          cellsStatusInfo[selected].haveQuestion = false
+          console.log(cellsStatusInfo[selected].cell.classList)
+        } else {
+          
           cellsStatusInfo[selected].cell.classList.remove('flagged')
           cellsStatusInfo[selected].haveFlag = false
-          cellsStatusInfo[selected].cell.classList.add('covered')
-          cellsStatusInfo[selected].isCovered = true;
-          console.log("asd")
+          nFlags+2
+          //interrogación
+          cellsStatusInfo[selected].cell.classList.add('question')
+          cellsStatusInfo[selected].haveQuestion = true
+          //nFlags++ funciona pero sima despues de la bandera
           console.log(cellsStatusInfo[selected].cell.classList)
-          nFlags+=2
+          
+        }
+        // remover interrogación
+        if (cellsStatusInfo[selected].isCovered === true 
+          && cellsStatusInfo[selected].haveFlag === true 
+          && cellsStatusInfo[selected].haveQuestion == true) {
+            
+            console.log(nFlags)
+            cellsStatusInfo[selected].cell.classList.remove('question')
+            cellsStatusInfo[selected].haveQuestion = false
+            cellsStatusInfo[selected].cell.classList.remove('flagged')
+            cellsStatusInfo[selected].haveFlag = false
+            cellsStatusInfo[selected].cell.classList.add('covered')
+            cellsStatusInfo[selected].isCovered = true;
+            console.log("asd")
+            console.log(cellsStatusInfo[selected].cell.classList)
+            nFlags+=2
+        }
+        
       }
-      
-    }
-    flagsMonitor.innerHTML = nFlags
+      flagsMonitor.innerHTML = nFlags
 
+    }
   }
 
   

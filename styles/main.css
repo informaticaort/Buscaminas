@@ -320,3 +320,15 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+
+
+#game-over {
+  display: none;
+  text-align: center;
+  padding-top: 150px;
+  z-index: 1;
+  width: 1024px;
+  height: 576px;
+  position: absolute;
+}

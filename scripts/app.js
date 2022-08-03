@@ -14,7 +14,7 @@ function init() {
   let width = 9
   let height = 9
   let cellCount = width * height
-  let nBombs = 10
+  let nBombs = 7
   let nFlags = nBombs
   flagsMonitor.innerHTML = nFlags
   let cellsStatusInfo = []
@@ -410,8 +410,9 @@ function init() {
     }
     if (cellsOpened === cellCount - nBombs) {
       timerStop()
-      alert('Ganaste /n tiempo: '+timerMonitor.innerHTML)   // Mensaje juego ganado
-     
+      //alert('Ganaste /n tiempo: '+timerMonitor.innerHTML)   // Mensaje juego ganado
+      let name= prompt("Ingresá tu nombre: ")
+      enviarPuntaje(timerMonitor.innerHTML,name);
       for (let i = 0; i < cellCount; i++) {  //todas las celdas se convierten a no clickeables
         cellsStatusInfo[i].cell.classList.add('disabled')
       }
@@ -461,3 +462,32 @@ function init() {
 }
 
 window.addEventListener('DOMContentLoaded', init)
+
+
+
+
+
+/**
+ * Envia puntaje
+ */
+ function enviarPuntaje(score, name)
+ {
+   
+  console.log(name)
+  console.log(score)
+   var xhr = new XMLHttpRequest();
+           xhr.open('POST', 'http://10.128.20.20/inforunner/insertar.php?name='+name+'&score='+score+'&pc='+0, true);
+           xhr.withCredentials = true;
+           xhr.onreadystatechange = function() {
+             if (xhr.readyState === 2) {
+               console.log(name + " , partida guardada con "+score + " puntos!");
+             }
+           }
+           xhr.setRequestHeader('Content-Type', 'application/text');
+           xhr.send(name);
+           
+   $('#myForm').hide();
+   $('.enviar').hide();
+  
+ }
+ 

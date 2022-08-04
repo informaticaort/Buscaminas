@@ -17,7 +17,9 @@
     <script type="text/javascript" src="scripts/jquery.2.1.1.min.js"></script>
   </head>
   <body oncontextmenu="return false;">   <!--no menú contextual del click derecho -->
-    <div class="game-wrapper">
+
+    
+    <div class="game-wrapper" id="juego">
       <div class="status-bar">
         <img src="./assets/img/mini.png" alt="info" class="mini-icon" />
         <p>BUSCAMINAS</p>
@@ -56,7 +58,19 @@
     <!--Musica cuando pierde-->
     <audio id="audio" src="assets/audio/MinesweeperGameOver.ogg"></audio>
 
-
+    <div id="scores">
+      <h2 class="win">Sumaste <span id="score"></span> puntos</h2>
+        <form id="myForm" action="" method="post">
+          <h2 class="win">Nombre: <input type="text" name="myForm-Name" id="myForm-Name" size="3" maxlength="3"/>
+        </form>
+        </h2>
+        <a href="javascript:void(0)" class="button enviar">Enviar</a>
+      </br>
+        <a href="index.html" class="button restar win">Reintentar</a>
+       
+      </div>
+    </div>
 
   </body>
 </html>
+ 

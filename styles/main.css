@@ -19,6 +19,22 @@ body {
   font-family: sans-serif;
 }
 
+/* Pantalla de partida ganada */
+#scores{
+  display: none;
+  background-image: url(../assets/img/FondoWin.png);
+  width: 550px;
+  height: 267px;
+  padding-top: 89px;
+  padding-left: 151px;
+  border: 1px solid black;
+}
+
+.win{
+  font-family: 'VT323', monospace;
+  font-size: 29px;
+}
+
 /* STATUS BAR */
 .status-bar {
   height: 31px;

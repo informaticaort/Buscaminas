@@ -414,8 +414,13 @@ function init() {
       document.getElementById("juego").style.display = "none"
       document.getElementById("scores").style.display = "block"
       document.getElementById("score").innerHTML = timerMonitor.innerHTML
-      let name= prompt("Ingresá tu nombre: ")
-      enviarPuntaje(timerMonitor.innerHTML,name);
+      //let name= prompt("Ingresá tu nombre: ")
+      document.getElementById("submit").addEventListener("click", 
+        function tomarDatos(){
+          var name=document.getElementById('myForm-Name').value;
+          let tiempo= document.getElementById("score").innerHTML = timerMonitor.innerHTML;
+          enviarPuntaje(tiempo,name);
+        });
       for (let i = 0; i < cellCount; i++) {  //todas las celdas se convierten a no clickeables
         cellsStatusInfo[i].cell.classList.add('disabled')
       }

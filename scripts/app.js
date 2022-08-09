@@ -415,6 +415,7 @@ function init() {
 
       document.getElementById("scores").style.display = "block"
 
+      /* movimiento del div "ganaste"*/
       window.onload = addListeners();
       function addListeners(){
         document.getElementById('scores').addEventListener('mousedown', mouseDown, false);

@@ -68,11 +68,11 @@ function init() {
       grid.style.width = '600px'
       gameWrapper.style.width = '600px'
       reset()
-    } else if (event.target.innerHTML === 'Super Fácil') {
-      width = 5
-      height = 5
+    } else if (event.target.innerHTML === '') {
+      width = 
+      height = 
       cellCount = width * height
-      nBombs = 2
+      nBombs = 
       nFlags = nBombs
       flagsMonitor.innerHTML = nFlags
       grid.style.gridTemplateColumns = 'repeat(5, 1fr)'
@@ -411,8 +411,35 @@ function init() {
     if (cellsOpened === cellCount - nBombs) {
       timerStop()
       //alert('Ganaste /n tiempo: '+timerMonitor.innerHTML)   // Mensaje juego ganado
-      document.getElementById("juego").style.display = "none"
+      //document.getElementById("juego").style.display = "none"
+
       document.getElementById("scores").style.display = "block"
+
+      window.onload = addListeners();
+      function addListeners(){
+        document.getElementById('scores').addEventListener('mousedown', mouseDown, false);
+        window.addEventListener('mouseup', mouseUp, false);
+    
+    }
+    
+    function mouseUp()
+    {
+        window.removeEventListener('mousemove', divMove, true);
+    }
+    
+    function mouseDown(e){
+      window.addEventListener('mousemove', divMove, true);
+    }
+    
+    function divMove(e){
+        var div = document.getElementById('scores');
+      div.style.position = 'absolute';
+      div.style.top = e.clientY + 'px';
+      div.style.left = e.clientX + 'px';
+    }
+
+/* fin movimiento de div*/
+
       document.getElementById("score").innerHTML = timerMonitor.innerHTML
       //let name= prompt("Ingresá tu nombre: ")
       document.getElementById("submit").addEventListener("click", 

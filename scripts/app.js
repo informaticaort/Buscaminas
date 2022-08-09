@@ -68,7 +68,7 @@ function init() {
       grid.style.width = '600px'
       gameWrapper.style.width = '600px'
       reset()
-    } else if (event.target.innerHTML === 'Custom') {
+    } else if (event.target.innerHTML === 'Super Fácil') {
       width = 5
       height = 5
       cellCount = width * height

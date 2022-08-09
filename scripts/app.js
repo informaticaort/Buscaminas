@@ -377,6 +377,7 @@ function init() {
     if (resetBtn.classList.value === 'face-win') {
       resetBtn.classList.remove('face-win')
       resetBtn.classList.add('face-button')
+      document.getElementById("scores").style.display = "none"
     }
     if (resetBtn.classList.value === 'face-dead') {
       resetBtn.classList.remove('face-dead')

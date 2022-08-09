@@ -17,6 +17,8 @@ body {
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+  overflow-y: hidden; /* hide vertical*/
+  overflow-x: hidden; /* hide horizontal*/
 }
 
 /* Pantalla de partida ganada */

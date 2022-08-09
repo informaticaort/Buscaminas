@@ -35,7 +35,6 @@
             <div class="content">Principiante</div>
             <div class="content">Intermedio</div>
             <div class="content">Avanzado</div>
-            <!-- <div class="content-audio">Audio</div> -->
           </div>
         </div>
         <a
@@ -51,32 +50,41 @@
         <div class="face-button"></div>
         <div id="timer-monitor">0</div>
       </div>
-      <!-- This is the grid that will receive the mined floor -->
+      <!-- grilla que va a recibir las minas -->
       <div class="grid-wrapper">
         <div class="grid"></div>
       </div>
     </div>
-    <!--Musica cuando pierde-->
+    <!--Sonido cuando pierde-->
     <audio id="audio" src="assets/audio/MinesweeperGameOver.ogg"></audio>
 
+    <!-- div juego ganado-->
     <div id="scores">
-      <h2 class="win">Sumaste <span id="score"></span> puntos</h2>
-        <form id="myForm" action="" method="post">
-          <h2 class="win">Nombre: <input type="text" name="myForm-Name" id="myForm-Name" size="3" maxlength="3"/>
-        </form>
-       <!-- </h2>
-        <a href="javascript:void(0)" class="button enviar" id="submit">Enviar</a>
-      </br>
-        <a href="index.html" class="button restar win">Reintentar</a>
-    -->
-
+      <p id="botonn">_</p>
+      <div class="mensaje">
+        <h2 class="win">Sumaste <span id="score"></span> puntos</h2>
+          <form id="myForm" action="" method="post">
+            <h2 class="win">Nombre: <input type="text" name="myForm-Name" id="myForm-Name" size="3" maxlength="3"/>
+          </form>
         </h2>
-      </br>
- <!-- <a class="button enviar win" id="submit">Enviar</a> -->
-      <div class="winCl-wrap"><input class="winCl-btn enviar win" type="button" value="Enviar" id="submit"/></div>
-      </br>
-      <div class="winCl-wrap"><input class="winCl-btn win" type="button" value="Reintentar" onclick="window.location.href='index.html';"/></div>
+        </br>
+  <!-- <a class="button enviar win" id="submit">Enviar</a> -->
+        <div class="winCl-wrap"><input class="winCl-btn enviar win" type="button" value="Enviar" id="submit"/></div>
+          </br>
+        <div class="winCl-wrap"><input class="winCl-btn win" type="button" value="Reintentar" onclick="window.location.href='index.html';"/></div>
 
+        </div>
+      </div>
+    </div>
+
+
+    <!-- div juego perdido-->
+    <div id="loss">
+      <p id="boto">	_</p>
+      <div class="mensaje">
+        <h2 class="win">¡PERDISTE!</h2> 
+        </br></br></br>
+        <div class="winCl-wrap"><input class="winCl-btn win" type="button" value="Reintentar" onclick="window.location.href='index.html';"/></div>
       </div>
     </div>
 

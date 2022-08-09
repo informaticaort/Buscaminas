@@ -350,7 +350,38 @@ function init() {
     // cambiar cara
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-dead')
-    alert("Perdiste")
+    document.getElementById("loss").style.display = "block"
+    document.getElementById("scores").style.display = "none"
+    console.log("Perdiste")
+    
+    /* movimiento del div "perdiste"*/
+    window.onload = addListeners();
+   
+    function addListeners(){
+      document.getElementById('boto').addEventListener('mousedown', mouseDown, false);
+      window.addEventListener('mouseup', mouseUp, false);
+     
+  }
+  
+  function mouseUp()
+  {
+    
+    window.removeEventListener('mousemove', divMove, true);
+  }
+  
+  function mouseDown(e){
+    window.addEventListener('mousemove', divMove, true);
+  }
+  
+  function divMove(e){
+      var div = document.getElementById('loss');
+    div.style.position = 'absolute';
+    div.style.top = e.clientY + 'px';
+    div.style.left = e.clientX + 'px';
+  }
+
+/* fin movimiento de div*/
+    
   }
 
   function timerStart() {     //inicio del contador
@@ -382,6 +413,7 @@ function init() {
     if (resetBtn.classList.value === 'face-dead') {
       resetBtn.classList.remove('face-dead')
       resetBtn.classList.add('face-button')
+      document.getElementById("loss").style.display = "none"
     }
 
     while (grid.firstChild) {
@@ -409,17 +441,14 @@ function init() {
     if (cellsStatusInfo[selected].haveBomb === true) {
       clickedOnBomb(selected)
     }
-    if (cellsOpened === cellCount - nBombs) {
+    if (cellsOpened === cellCount - nBombs && cellsStatusInfo[selected].haveBomb === false) {
       timerStop()
-      //alert('Ganaste /n tiempo: '+timerMonitor.innerHTML)   // Mensaje juego ganado
-      //document.getElementById("juego").style.display = "none"
-
       document.getElementById("scores").style.display = "block"
-
+      console.log("Ganaste-")
       /* movimiento del div "ganaste"*/
-      window.onload = addListeners();
-      function addListeners(){
-        document.getElementById('scores').addEventListener('mousedown', mouseDown, false);
+      window.onload = addListeners1();
+      function addListeners1(){
+        document.getElementById('botonn').addEventListener('mousedown', mouseDown, false);
         window.addEventListener('mouseup', mouseUp, false);
     
     }

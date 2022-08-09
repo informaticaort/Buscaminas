@@ -19,6 +19,7 @@ body {
   font-family: sans-serif;
   overflow-y: hidden; /* hide vertical*/
   overflow-x: hidden; /* hide horizontal*/
+  user-select: none;
 }
 
 /* Pantalla de partida ganada */
@@ -27,11 +28,33 @@ body {
   background-image: url(../assets/img/FondoWin.png);
   width: 550px;
   height: 267px;
-  padding-top: 89px;
-  padding-left: 151px;
+  color: rgba(0, 0, 0, 0);
   border: 1px solid black;
 }
 
+/* pantalla partida perdida*/
+
+#loss{
+  display: none;
+  background-image: url(../assets/img/FondoWin.png);
+  width: 550px;
+  height: 267px;
+  color: rgba(0, 0, 0, 0);
+  border: 1px solid black;
+}
+
+.mensaje{
+  color: black;
+  padding-top: 51px;
+  padding-left: 179px;
+
+}
+#botonn, #boto{
+ 
+   font-size: 26px;
+   width: 30px;
+   height: 30px;
+}
 .win{
   font-family: 'VT323', monospace;
   font-size: 29px;

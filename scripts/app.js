@@ -1,5 +1,15 @@
+ /*  función cambio de hojas de estilo*/
+ function cambioEstilos(event){
+  if (event.target.innerHTML === 'Windows'){
+   document.getElementById('estilos').href = './styles/main.css';
+ }else if (event.target.innerHTML === 'Messi'){
+   document.getElementById('estilos').href = './styles/main2.css';
+ }
+}
+
 
 function init() {
+  document.getElementById('estilos').href= './styles/main.css';
   //* Variables
   const grid = document.querySelector('.grid') //selecciona el div
   const audio = document.querySelector('#audio') //Selecciona el audio
@@ -9,6 +19,7 @@ function init() {
   const newGame = document.querySelector('.new-game')
   const levels = document.querySelectorAll('.content')
   const gameWrapper = document.querySelector('.game-wrapper')
+  const estilos= document.querySelectorAll('.content')
 
   //Nivel fácil
   let width = 9
@@ -38,6 +49,8 @@ function init() {
 
     }
   }
+
+
 
   //* Funciones
 
@@ -266,7 +279,6 @@ function init() {
             cellsStatusInfo[selected].haveFlag = false
             cellsStatusInfo[selected].cell.classList.add('covered')
             cellsStatusInfo[selected].isCovered = true;
-            console.log("asd")
             console.log(cellsStatusInfo[selected].cell.classList)
             nFlags+=2
         }
@@ -360,30 +372,31 @@ function init() {
     function addListeners(){
       document.getElementById('boto').addEventListener('mousedown', mouseDown, false);
       window.addEventListener('mouseup', mouseUp, false);
-     
-  }
   
-  function mouseUp()
-  {
+    }
+  
+    function mouseUp()
+    {
+      
+      window.removeEventListener('mousemove', divMove, true);
+    }
     
-    window.removeEventListener('mousemove', divMove, true);
-  }
+    function mouseDown(e){
+      window.addEventListener('mousemove', divMove, true);
+    }
   
-  function mouseDown(e){
-    window.addEventListener('mousemove', divMove, true);
-  }
-  
-  function divMove(e){
-      var div = document.getElementById('loss');
-    div.style.position = 'absolute';
-    div.style.top = e.clientY + 'px';
-    div.style.left = e.clientX + 'px';
-  }
+    function divMove(e){
+        var div = document.getElementById('loss');
+      div.style.position = 'absolute';
+      div.style.top = e.clientY + 'px';
+      div.style.left = e.clientX + 'px';
+    }
 
 /* fin movimiento de div*/
-    
+console.log(document.getElementById('estilos').href)
+  estilo= document.getElementById('estilos').href
   }
-
+  
   function timerStart() {     //inicio del contador
     timerId = setInterval(() => {
       timerMonitor.innerHTML++
@@ -398,6 +411,8 @@ function init() {
     timerMonitor.innerHTML = 0
   }
   function reset() {         // resetea el juego (solo la grilla)
+                                                    console.log(document.getElementById('estilos').href)
+                                                  estilo= document.getElementById('estilos').href
     timerReset()
     nFlags = nBombs
     flagsMonitor.innerHTML = nFlags
@@ -503,8 +518,8 @@ function init() {
   function oohFaceUp(event) {
     resetBtn.classList.remove('face-ooh')
   }
-
-
+  document.getElementById('rein').addEventListener("click", reset,true)
+  
 
   //*Event listeners
 
@@ -524,14 +539,22 @@ function init() {
   newGame.addEventListener('click', reset)
   levels.forEach(level =>
     level.addEventListener('click', changeLevel))
-
+  estilos.forEach(estilo =>
+    estilo.addEventListener('click', cambioEstilos))
 }
 
 window.addEventListener('DOMContentLoaded', init)
 
 
 
-
+/*function reload(){
+  window.location.href='index.html';
+  window.addEventListener('DOMContentLoaded', CS())
+  }
+  function CS(){
+    document.getElementById('estilos').href=a
+  }
+*/
 
 /**
  * Envia puntaje
@@ -557,33 +580,6 @@ window.addEventListener('DOMContentLoaded', init)
   
  }
  
-
-
- /*
- 
-
- * Envia puntaje
- 
-function enviarPuntaje(score, preguntascorrectas)
-{
-  var name=document.getElementById('myForm-Name').value;
-
-  var xhr = new XMLHttpRequest();
-          xhr.open('POST', 'http://10.128.20.20/inforunner/insertar.php?name='+name+'&score='+score+'&pc='+preguntascorrectas, true);
-          xhr.withCredentials = true;
-          xhr.onreadystatechange = function() {
-            if (xhr.readyState === 2) {
-              console.log(name + " , partida guardada con "+score + " puntos!");
-            }
-          }
-          xhr.setRequestHeader('Content-Type', 'application/text');
-          xhr.send(name);
-
-  $('#myForm').hide();
-  $('.enviar').hide();
-  document.getElementById('myForm-Name').value="";
-}
-*/
 
 
 

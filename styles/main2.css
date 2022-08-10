@@ -19,15 +19,53 @@ body {
   font-family: sans-serif;
 }
 
+/* Pantalla de partida ganada */
+#scores{
+  position: absolute;
+  display: none;
+  background-image: url(../assets/img/FondoWin.png);
+  width: 550px;
+  height: 267px;
+  color: rgba(0, 0, 0, 0);
+  border: 1px solid black;
+}
+
+/* pantalla partida perdida*/
+
+#loss{
+  position: absolute;
+  display: none;
+  background-image: url(../assets/img/FondoWin.png);
+  width: 550px;
+  height: 267px;
+  color: rgba(0, 0, 0, 0);
+  border: 1px solid black;
+}
+
+.mensaje{
+  color: black;
+  padding-top: 51px;
+  padding-left: 179px;
+
+}
+#botonn, #boto{
+ 
+   font-size: 26px;
+   width: 30px;
+   height: 30px;
+}
+.win{
+  font-family: 'VT323', monospace;
+  font-size: 29px;
+}
 /* STATUS BAR */
 .status-bar {
   height: 31px;
   width: 100%;
-  background-color: rgb(23, 23, 153);
+  background-color: rgb(48, 119, 77);
   display: flex;
   justify-content: flex-start; 
   align-items: center;
-  /*margin: 0 6px 3px 6px;*/
   box-shadow: 1px 1px rgba(0, 0, 0, 0.164), -1px -1px rgba(245, 245, 245, 0.281);
 }
 .status-bar > img {
@@ -45,7 +83,7 @@ body {
 
 /* FUNCTION BAR */
 .function-bar {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(189, 218, 204);
   border: 1px solid black;
   height: 22px;
   width: 100%;
@@ -104,15 +142,15 @@ body {
 
 /* OUTPUT WRAPPER */
 .outputs-wrapper {
-  background-color: rgb(189, 189, 189);
+  background-color: rgb(150, 173, 164);
   height: 50px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 9px;
-  box-shadow: 3px 3px 0px 0px inset rgba(245, 245, 245, 0.438),
-    -3px -3px 0px 0px inset rgba(27, 27, 27, 0.267);
+  box-shadow: 3px 3px 0px 0px inset rgba(90, 235, 162, 0.438),
+    -3px -3px 0px 0px inset rgba(1, 70, 35, 0.589);
 }
 
 #timer-monitor,
@@ -192,7 +230,7 @@ body {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(9, 1fr);
-  border: 1px solid gray;
+  border: 1px solid rgba(62, 218, 96, 0.397);
   justify-content: center;
   height: 300px;
   width: 300px;
@@ -202,7 +240,7 @@ body {
 .grid div {
   height: 100%;
   width: 100%;
-  background-color: rgb(143, 142, 142);
+  background-color: rgb(45, 94, 23);
   border: 0.5px dotted rgba(56, 56, 56, 0.61);
 }
 

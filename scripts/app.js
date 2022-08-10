@@ -25,7 +25,7 @@ function init() {
   let width = 9
   let height = 9
   let cellCount = width * height
-  let nBombs = 4
+  let nBombs = 6
   let nFlags = nBombs
   flagsMonitor.innerHTML = nFlags
   let cellsStatusInfo = []
@@ -66,8 +66,9 @@ function init() {
       flagsMonitor.innerHTML = nFlags
       grid.style.gridTemplateColumns = 'repeat(16, 1fr)'
       grid.style.gridTemplateRows = 'repeat(16, 1fr)'
-      grid.style.width = '325px'
-      gameWrapper.style.width = '325px'
+      grid.style.width = '425px'  //325
+      grid.style.height = '425px'  //325
+      gameWrapper.style.width = '425px'
       reset()
     } else if (event.target.innerHTML === 'Avanzado') {
       width = 30
@@ -76,21 +77,24 @@ function init() {
       nBombs = 99
       nFlags = nBombs
       flagsMonitor.innerHTML = nFlags
-      grid.style.gridTemplateColumns = 'repeat(30, 1fr)'
-      grid.style.gridTemplateRows = 'repeat(16, 1fr)'
-      grid.style.width = '600px'
-      gameWrapper.style.width = '600px'
+      grid.style.gridTemplateColumns = 'repeat(30, 2fr)'
+      grid.style.gridTemplateRows = 'repeat(16, 2fr)'
+      grid.style.width = '777px'
+      grid.style.height = '378px'
+      gameWrapper.style.width = '777px'
+  
       reset()
-    } else if (event.target.innerHTML === '') {
-      width = 
-      height = 
+    } else if (event.target.innerHTML === 'Super Fácil') {
+      width = 5
+      height = 5
       cellCount = width * height
-      nBombs = 
+      nBombs = 3
       nFlags = nBombs
       flagsMonitor.innerHTML = nFlags
       grid.style.gridTemplateColumns = 'repeat(5, 1fr)'
       grid.style.gridTemplateRows = 'repeat(5, 1fr)'
       grid.style.width = '300px'
+      grid.style.height = grid.style.width
       gameWrapper.style.width = '300px'
       reset()
     }else {
@@ -103,6 +107,7 @@ function init() {
       grid.style.gridTemplateColumns = 'repeat(9, 1fr)'
       grid.style.gridTemplateRows = 'repeat(9, 1fr)'
       grid.style.width = '300px'
+      grid.style.height = grid.style.width
       gameWrapper.style.width = '300px'
       reset()
     }

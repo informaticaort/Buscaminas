@@ -1,0 +1,355 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    cursor: default;
+  }
+  
+  body {
+   /*Fondo de pantalla del juego*/
+    background-image: url(../assets/img/stranger/Fondo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom left;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+  }
+  /* Pantalla de partida ganada */
+#scores{
+  position: absolute;
+  display: none;
+  background-image: url(../assets/img/FondoWin.png);
+  width: 550px;
+  height: 267px;
+  color: rgba(0, 0, 0, 0);
+  border: 1px solid black;
+}
+
+/* pantalla partida perdida*/
+
+#loss{
+  position: absolute;
+  display: none;
+  background-image: url(../assets/img/FondoWin.png);
+  width: 550px;
+  height: 267px;
+  color: rgba(0, 0, 0, 0);
+  border: 1px solid black;
+}
+
+.mensaje{
+  color: black;
+  padding-top: 51px;
+  padding-left: 179px;
+
+}
+#botonn, #boto{
+ 
+   font-size: 26px;
+   width: 30px;
+   height: 30px;
+}
+.win{
+  font-family: 'VT323', monospace;
+  font-size: 29px;
+}
+  /* STATUS BAR */
+  .status-bar {
+    height: 31px;
+    width: 100%;
+    background-color: rgb(23, 23, 153);
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    /*margin: 0 6px 3px 6px;*/
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.164), -1px -1px rgba(245, 245, 245, 0.281);
+  }
+  .status-bar > img {
+    width: 31px;
+    height: 31px;
+  }
+  .status-bar > p {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 21px;
+    font-family: 'VT323', monospace;
+    color: white;
+  
+  }
+  
+  /* FUNCTION BAR */
+  .function-bar {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    height: 22px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 9px;
+    box-shadow: 2px 0px 0px 0px inset rgba(0, 0, 0, 0.2),
+      -2px 0px 0px 0px inset rgba(0, 0, 0, 0.2);
+  }
+  .function-bar > * {
+    font-size: 18px;
+    font-family: 'VT323', monospace;
+    margin-right: 5px;
+    text-decoration: none;
+    color: black;
+    cursor: default;
+    padding: 2px;
+  }
+  .function-bar > *:hover,
+  .dropdown-content > *:hover {
+    background-color: rgba(7, 7, 7, 0.059);
+  }
+  /* DROPDOWN */
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #c5c3c3;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.38),
+      3px 3px inset rgba(255, 255, 255, 0.137),
+      -2px -2px inset rgba(7, 7, 7, 0.164);
+    z-index: 1;
+    cursor: default;
+    border: 1px solid rgba(0, 0, 0, 0.199);
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content > div {
+    font-size: 14px;
+    margin: 8px;
+    padding: 3px 0;
+  }
+  
+  #line {
+    margin-left: 6px;
+    padding: 0;
+    width: 130px;
+    height: 1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.233);
+  }
+  
+  /* OUTPUT WRAPPER */
+  .outputs-wrapper {
+    background-color: rgb(189, 189, 189);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px;
+    box-shadow: 3px 3px 0px 0px inset rgba(245, 245, 245, 0.438),
+      -3px -3px 0px 0px inset rgba(27, 27, 27, 0.267);
+  }
+  
+  #timer-monitor,
+  #flags-monitor {
+    background-color: black;
+    padding: 3px;
+    color: red;
+    margin: 0 7px;
+    font-size: 30px;
+    height: 35px;
+    width: 55px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 2px;
+    font-family:'digital-clock-font'
+  }
+  
+  /*Cara feliz*/
+  .face-button {
+    cursor: default;
+    background-image: url("../assets/img/stranger/feliz.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 40px;
+    width: 40px;
+  }
+  
+  /*Cara perdio*/
+  .face-dead {
+    background-image: url("../assets/img/stranger/perdio.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+  }
+  
+  /*Cara gano*/
+  .face-win {
+    background-image: url("../assets/img/stranger/gano.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 40px;
+    width: 40px;
+    cursor: default;
+  }
+  
+  /*Cara uhhh */
+  .face-ooh {
+    background-image: url("../assets/img/stranger/uhh.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 40px;
+    width: 40px;
+    cursor: default;
+  }
+  
+  /* GRID WRAPPER */
+  
+  .game-wrapper {
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 405px;
+    width: 302px;
+    background-color: rgb(167, 167, 167);
+    border: 1px solid black;
+  }
+  /* Setting a class for Beginner Level */
+  
+  .grid {
+    /* align-items: center; */
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    border: 1px solid gray;
+    justify-content: center;
+    height: 300px;
+    width: 300px;
+    cursor: default;
+  }
+  
+  .grid div {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(143, 142, 142);
+    border: 0.5px dotted rgba(56, 56, 56, 0.61);
+  }
+  
+  .disabled {
+    pointer-events: none;
+  }
+  
+  .grid-wrapper > .grid > .covered {
+    background-image: url(../assets/img/blank.gif);
+    border: 0.5px solid rgba(0, 0, 0, 0.438);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: default;
+  }
+  .grid-wrapper > .grid > .clicked {
+    background-image: url(../assets/img/numbers/open0.gif);
+    border: 0.5px solid rgba(0, 0, 0, 0.438);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: default;
+  }
+  .uncovered {
+    background-image: url(../assets/img/numbers/notchecked.gif);
+  
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*Bandera*/
+  .game-wrapper > .grid-wrapper > .grid > .flagged {
+    background-image: url("../assets/img/Bandera.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: default;
+  }
+  /*bomba*/
+  .grid > .bomb {
+    background-image: url("../assets/img/stranger/bomba.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*1*/
+  .uncoveredOne {
+    background-image: url(../assets/img/numbers/1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*2*/
+  .uncoveredTwo {
+    background-image: url(../assets/img/numbers/2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*3*/
+  .uncoveredThree {
+    background-image: url(../assets/img/numbers/3.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*4*/
+  .uncoveredFour {
+    background-image: url(../assets/img/numbers/4.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*5*/
+  .uncoveredFive {
+    background-image: url(../assets/img/numbers/5.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*6*/
+  .uncoveredSix {
+    background-image: url(../assets/img/numbers/6.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*7*/
+  .uncoveredSeven {
+    background-image: url(../assets/img/numbers/7.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*8*/
+  .uncoveredEight {
+    background-image: url(../assets/img/numbers/8.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*Bomba cubierta*/
+  .misflagged {
+    background-image: url(../assets/img/stranger/bomba-cubierta.png),;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /*Bomba perdio*/
+  .death {
+    background-image: url(../assets/img/stranger/bomba-perdio.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  

@@ -5,6 +5,12 @@
  }else if (event.target.innerHTML === 'Messi'){
    document.getElementById('estilos').href = './styles/main2.css';
  }
+ else if (event.target.innerHTML === 'Comida'){
+  document.getElementById('estilos').href = './styles/main-comidas.css';
+}
+else if (event.target.innerHTML === 'Stranger Things'){
+  document.getElementById('estilos').href = './styles/main-strangers.css';
+}
 }
 
 

@@ -80,7 +80,6 @@ body {
   display: flex;
   justify-content: flex-start; 
   align-items: center;
-  /*margin: 0 6px 3px 6px;*/
   box-shadow: 1px 1px rgba(0, 0, 0, 0.164), -1px -1px rgba(245, 245, 245, 0.281);
 }
 .status-bar > img {
@@ -238,7 +237,7 @@ body {
   background-color: rgb(167, 167, 167);
   border: 1px solid black;
 }
-/* Setting a class for Beginner Level */
+
 
 .grid {
   /* align-items: center; */

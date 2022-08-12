@@ -145,7 +145,7 @@ function init() {
   }
 
   function uncoverCell(selected) {  //esta función cambia la clase de una celda clickeada de cubierta a descubierta  
-    /*if (cellsStatusInfo[selected].haveFlag === true) {*/
+
     if (cellsStatusInfo[selected].haveQuestion === true) {
       return
     }
@@ -274,7 +274,6 @@ function init() {
           //interrogación
           cellsStatusInfo[selected].cell.classList.add('question')
           cellsStatusInfo[selected].haveQuestion = true
-          //nFlags++ funciona pero sima despues de la bandera
           console.log(cellsStatusInfo[selected].cell.classList)
           
         }
@@ -422,8 +421,7 @@ console.log(document.getElementById('estilos').href)
     timerMonitor.innerHTML = 0
   }
   function reset() {         // resetea el juego (solo la grilla)
-                                                    console.log(document.getElementById('estilos').href)
-                                                  estilo= document.getElementById('estilos').href
+
     timerReset()
     nFlags = nBombs
     flagsMonitor.innerHTML = nFlags
@@ -498,7 +496,6 @@ console.log(document.getElementById('estilos').href)
 /* fin movimiento de div*/
 
       document.getElementById("score").innerHTML = timerMonitor.innerHTML
-      //let name= prompt("Ingresá tu nombre: ")
       document.getElementById("submit").addEventListener("click", 
         function tomarDatos(){
           var name=document.getElementById('myForm-Name').value;
@@ -556,16 +553,6 @@ console.log(document.getElementById('estilos').href)
 
 window.addEventListener('DOMContentLoaded', init)
 
-
-
-/*function reload(){
-  window.location.href='index.html';
-  window.addEventListener('DOMContentLoaded', CS())
-  }
-  function CS(){
-    document.getElementById('estilos').href=a
-  }
-*/
 
 /**
  * Envia puntaje

@@ -57,7 +57,7 @@ function init() {
   }
 
   //* Funciones
-  function changeLevel(event) {        // esta funcion cambia la UI y la lógica del juego en cada nivel
+  function cambiarNivel(event) {        // esta funcion cambia la UI y la lógica del juego en cada nivel
     if (event === null) {
       return
     } else if (event.target.innerHTML === 'Intermedio') {
@@ -115,8 +115,8 @@ function init() {
     }
   }
 
-  function createGrid() {                   //esta función crea las celdas en la grilla con estado "cubierto"   
-    changeLevel(null)
+  function crearGrid() {                   //esta función crea las celdas en la grilla con estado "cubierto"   
+    cambiarNivel(null)
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       cell.dataset.id = i
@@ -133,13 +133,13 @@ function init() {
     const cellsAround = whoIsCloseToMe(parseInt(index))
     for (let i = 0; i < cellsAround.length; i++) {
       if (cellsStatusInfo[cellsAround[i]].isCovered === true) {
-        uncoverCell(cellsAround[i])
+        descubrirCeldas(cellsAround[i])
       }
 
     }
   }
 
-  function uncoverCell(selected) {  //esta función cambia la clase de una celda clickeada de cubierta a descubierta  
+  function descubrirCeldas(selected) {  //esta función cambia la clase de una celda clickeada de cubierta a descubierta  
 
     if (cellsStatusInfo[selected].haveQuestion === true) {
       return
@@ -151,10 +151,10 @@ function init() {
     cellsStatusInfo[selected].cell.classList.add('disabled')
     if (firstClick === true) {
 
-      timerStart()
+      inicioTiermpo()
       firstClick = false
       while (cellsStatusInfo[selected].haveBomb === true || cellsStatusInfo[selected].nBombsClose !== 0) {
-        removeAllBombs()
+        removerTodasLasBombas()
         randomBombPosition()
       }
 
@@ -166,7 +166,7 @@ function init() {
     cellsOpened++
   }
 
-  function removeAllBombs() {            // Esta función remueve todas las bombas
+  function removerTodasLasBombas() {            // Esta función remueve todas las bombas
     for (let i = 0; i < cellCount; i++) {
       cellsStatusInfo[i].nBombsClose = 0
       if (cellsStatusInfo[i].haveBomb === true) {
@@ -248,7 +248,7 @@ function init() {
   }
 
 
-  function addFlag(event) {            //este evento agrega o quita banderas
+  function agregarQuitarBandera(event) {            //este evento agrega o quita banderas
     event.preventDefault()
     const selected = event.target.dataset.id
 
@@ -290,13 +290,13 @@ function init() {
     }
   }
 
-  function misflagged(selected) {      // retiro de bandera
+  function retiroBandera(selected) {      // retiro de bandera
     cellsStatusInfo[selected].cell.classList.remove('flagged')
     cellsStatusInfo[selected].cell.classList.remove('covered')
     cellsStatusInfo[selected].cell.classList.add('misflagged')
   }
 
-  function numbersAndEmptySpaces() {      // esta función maneja lo que pasa cuando se hace click en una celda vacia   
+  function numerosYEspaciosBacios() {      // esta función maneja lo que pasa cuando se hace click en una celda vacia   
     for (let i = 0; i < cellCount; i++) {
       switch (cellsStatusInfo[i].nBombsClose) {
         case 0:
@@ -339,14 +339,14 @@ function init() {
 
   }
 
-  function clickedOnBomb(selected) {         //esta función maneja lo que sucede cuando se encuentra una bomba   
+  function clickEnBomba(selected) {         //esta función maneja lo que sucede cuando se encuentra una bomba   
     cellsStatusInfo[selected].cell.classList.remove('bomb')
     cellsStatusInfo[selected].cell.classList.add('death')
     audio.volume = 0.08
     audio.play()
     for (let i = 0; i < cellCount; i++) {
       if (cellsStatusInfo[i].haveBomb === false && cellsStatusInfo[i].haveFlag === true) {
-        misflagged(i)
+        retiroBandera(i)
       }
       if (cellsStatusInfo[i].haveBomb === true && cellsStatusInfo[i].isCovered === true) {
         cellsStatusInfo[i].cell.classList.remove('flagged')
@@ -393,7 +393,7 @@ function init() {
   estilo= document.getElementById('estilos').href
   }
   
-  function timerStart() {     //inicio del contador
+  function inicioTiermpo() {     //inicio del contador
     timerId = setInterval(() => {
       timerMonitor.innerHTML++
     }, 1000)
@@ -429,27 +429,27 @@ function init() {
     while (grid.firstChild) {
       grid.removeChild(grid.lastChild)
     }
-    createGrid()
+    crearGrid()
     randomBombPosition()
     cellsStatusInfo.forEach(cells =>
-      cells.cell.addEventListener('click', game))
+      cells.cell.addEventListener('click', juego))
     cellsStatusInfo.forEach(cells =>
       cells.cell.addEventListener('mousedown', oohFaceDown))
     cellsStatusInfo.forEach(cells =>
       cells.cell.addEventListener('mouseup', oohFaceUp))
     cellsStatusInfo.forEach(cells =>
-      cells.cell.addEventListener('contextmenu', addFlag))
+      cells.cell.addEventListener('contextmenu', agregarQuitarBandera))
     resetBtn.addEventListener('click', reset)
     newGame.addEventListener('click', reset)
 
   }
 
-  function game(event) {            //esta función maneja cada click en el juego
+  function juego(event) {            //esta función maneja cada click en el juego
     const selected = event.target.dataset.id
-    uncoverCell(selected)
-    numbersAndEmptySpaces()
+   descubrirCeldas(selected)
+      numerosYEspaciosBacios()
     if (cellsStatusInfo[selected].haveBomb === true) {
-      clickedOnBomb(selected)
+      clickEnBomba(selected)
     }
     if (cellsOpened === cellCount - nBombs && cellsStatusInfo[selected].haveBomb === false) {
       timerStop()
@@ -517,22 +517,22 @@ function init() {
 
   //*Event listeners
 
-  createGrid()
+  crearGrid()
   randomBombPosition()
 
 
   cellsStatusInfo.forEach(cells =>
-    cells.cell.addEventListener('click', game))
+    cells.cell.addEventListener('click', juego))
   cellsStatusInfo.forEach(cells =>
     cells.cell.addEventListener('mousedown', oohFaceDown))//
   cellsStatusInfo.forEach(cells =>
     cells.cell.addEventListener('mouseup', oohFaceUp))  //
   cellsStatusInfo.forEach(cells =>
-    cells.cell.addEventListener('contextmenu', addFlag))
+    cells.cell.addEventListener('contextmenu', agregarQuitarBandera))
   resetBtn.addEventListener('click', reset)
   newGame.addEventListener('click', reset)
   levels.forEach(level =>
-    level.addEventListener('click', changeLevel))
+    level.addEventListener('click', cambiarNivel))
   estilos.forEach(estilo =>
     estilo.addEventListener('click', cambioEstilos))
 }

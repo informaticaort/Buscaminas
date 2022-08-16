@@ -253,13 +253,11 @@ function inicio() {
     const selected = event.target.dataset.id
 
     if(nFlags>0){
-      console.log(nFlags)
       if (cellsStatusInfo[selected].isCovered === true) {
         if (cellsStatusInfo[selected].haveFlag === false) {
           cellsStatusInfo[selected].cell.classList.add('flagged')
           cellsStatusInfo[selected].haveFlag = true
           nFlags-=1
-          console.log(nFlags)
           console.log(cellsStatusInfo[selected].cell.classList)
         } else {
           cellsStatusInfo[selected].cell.classList.remove('flagged')
@@ -268,7 +266,6 @@ function inicio() {
           //interrogación
           cellsStatusInfo[selected].cell.classList.add('question')
           cellsStatusInfo[selected].haveQuestion = true
-          console.log(cellsStatusInfo[selected].cell.classList)
         }
         // remover interrogación
         if (cellsStatusInfo[selected].isCovered === true 

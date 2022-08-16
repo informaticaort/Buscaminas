@@ -477,12 +477,15 @@ function inicio() {
 /* fin movimiento de div*/
 
       document.getElementById("score").innerHTML = timerMonitor.innerHTML
+      /* si toma de datos para record de puntajes*/
+      /*
       document.getElementById("submit").addEventListener("click", 
         function tomarDatos(){
           var name=document.getElementById('myForm-Name').value;
           let tiempo= document.getElementById("score").innerHTML = timerMonitor.innerHTML;
           enviarPuntaje(tiempo,name);
         });
+        */
       for (let i = 0; i < cellCount; i++) {  //todas las celdas se convierten a no clickeables
         cellsStatusInfo[i].cell.classList.add('disabled')
       }

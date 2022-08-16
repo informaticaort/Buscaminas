@@ -56,10 +56,7 @@ function init() {
     }
   }
 
-
-
   //* Funciones
-
   function changeLevel(event) {        // esta funcion cambia la UI y la lógica del juego en cada nivel
     if (event === null) {
       return
@@ -88,7 +85,6 @@ function init() {
       grid.style.width = '777px'
       grid.style.height = '378px'
       gameWrapper.style.width = '777px'
-  
       reset()
     } else if (event.target.innerHTML === 'Super Fácil') {
       width = 5
@@ -117,7 +113,6 @@ function init() {
       gameWrapper.style.width = '300px'
       reset()
     }
-
   }
 
   function createGrid() {                   //esta función crea las celdas en la grilla con estado "cubierto"   
@@ -267,7 +262,6 @@ function init() {
           console.log(nFlags)
           console.log(cellsStatusInfo[selected].cell.classList)
         } else {
-          
           cellsStatusInfo[selected].cell.classList.remove('flagged')
           cellsStatusInfo[selected].haveFlag = false
           nFlags+2
@@ -275,13 +269,11 @@ function init() {
           cellsStatusInfo[selected].cell.classList.add('question')
           cellsStatusInfo[selected].haveQuestion = true
           console.log(cellsStatusInfo[selected].cell.classList)
-          
         }
         // remover interrogación
         if (cellsStatusInfo[selected].isCovered === true 
           && cellsStatusInfo[selected].haveFlag === true 
           && cellsStatusInfo[selected].haveQuestion == true) {
-            
             console.log(nFlags)
             cellsStatusInfo[selected].cell.classList.remove('question')
             cellsStatusInfo[selected].haveQuestion = false
@@ -292,14 +284,12 @@ function init() {
             console.log(cellsStatusInfo[selected].cell.classList)
             nFlags+=2
         }
-        
       }
       flagsMonitor.innerHTML = nFlags
 
     }
   }
 
-  
   function misflagged(selected) {      // retiro de bandera
     cellsStatusInfo[selected].cell.classList.remove('flagged')
     cellsStatusInfo[selected].cell.classList.remove('covered')
@@ -365,7 +355,6 @@ function init() {
       }
       //todas las celdas se convierten a no clickeables
       cellsStatusInfo[i].cell.classList.add('disabled')
-
     }
     // prar el temporizador
     timerStop()
@@ -374,11 +363,9 @@ function init() {
     resetBtn.classList.add('face-dead')
     document.getElementById("loss").style.display = "block"
     document.getElementById("scores").style.display = "none"
-    console.log("Perdiste")
     
     /* movimiento del div "perdiste"*/
     window.onload = addListeners();
-   
     function addListeners(){
       document.getElementById('boto').addEventListener('mousedown', mouseDown, false);
       window.addEventListener('mouseup', mouseUp, false);
@@ -403,7 +390,6 @@ function init() {
     }
 
 /* fin movimiento de div*/
-console.log(document.getElementById('estilos').href)
   estilo= document.getElementById('estilos').href
   }
   
@@ -468,7 +454,8 @@ console.log(document.getElementById('estilos').href)
     if (cellsOpened === cellCount - nBombs && cellsStatusInfo[selected].haveBomb === false) {
       timerStop()
       document.getElementById("scores").style.display = "block"
-      console.log("Ganaste-")
+
+
       /* movimiento del div "ganaste"*/
       window.onload = addListeners1();
       function addListeners1(){
@@ -477,8 +464,7 @@ console.log(document.getElementById('estilos').href)
     
     }
     
-    function mouseUp()
-    {
+    function mouseUp(){
         window.removeEventListener('mousemove', divMove, true);
     }
     
@@ -559,9 +545,6 @@ window.addEventListener('DOMContentLoaded', init)
  */
  function enviarPuntaje(score, name)
  {
-   
-  console.log(name)
-  console.log(score)
    var xhr = new XMLHttpRequest();
            xhr.open('POST', 'http://10.128.20.20/inforunner/insertar.php?name='+name+'&score='+score+'&pc='+0, true);
            xhr.withCredentials = true;

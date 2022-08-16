@@ -271,14 +271,12 @@ function inicio() {
         if (cellsStatusInfo[selected].isCovered === true 
           && cellsStatusInfo[selected].haveFlag === true 
           && cellsStatusInfo[selected].haveQuestion == true) {
-            console.log(nFlags)
             cellsStatusInfo[selected].cell.classList.remove('question')
             cellsStatusInfo[selected].haveQuestion = false
             cellsStatusInfo[selected].cell.classList.remove('flagged')
             cellsStatusInfo[selected].haveFlag = false
             cellsStatusInfo[selected].cell.classList.add('covered')
             cellsStatusInfo[selected].isCovered = true;
-            console.log(cellsStatusInfo[selected].cell.classList)
             nFlags+=2
         }
       }

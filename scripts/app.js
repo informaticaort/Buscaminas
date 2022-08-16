@@ -13,8 +13,8 @@ else if (event.target.innerHTML === 'Stranger Things'){
 }
 }
 
-
-function init() {
+/* función que da inicio al juego*/
+function inicio() {
   document.getElementById('estilos').href= './styles/main.css';
   //* Variables
   const grid = document.querySelector('.grid') //selecciona el div
@@ -27,7 +27,7 @@ function init() {
   const gameWrapper = document.querySelector('.game-wrapper')
   const estilos= document.querySelectorAll('.content')
 
-  //Nivel fácil
+  //Nivel inicial
   let width = 9
   let height = 9
   let cellCount = width * height
@@ -151,7 +151,7 @@ function init() {
     cellsStatusInfo[selected].cell.classList.add('disabled')
     if (firstClick === true) {
 
-      inicioTiermpo()
+      inicioTiempo()
       firstClick = false
       while (cellsStatusInfo[selected].haveBomb === true || cellsStatusInfo[selected].nBombsClose !== 0) {
         removerTodasLasBombas()
@@ -393,7 +393,7 @@ function init() {
   estilo= document.getElementById('estilos').href
   }
   
-  function inicioTiermpo() {     //inicio del contador
+  function inicioTiempo() {     //inicio del contador
     timerId = setInterval(() => {
       timerMonitor.innerHTML++
     }, 1000)
@@ -402,7 +402,7 @@ function init() {
     clearInterval(timerId)
     timerId = null
   }
-  function timerReset() {    //reset el timer
+  function timerReset() {    //resetear el tiempo
     timerStop()
     timerMonitor.innerHTML = 0
   }
@@ -464,15 +464,15 @@ function init() {
     
     }
     
-    function mouseUp(){
+    function mouseUp(){   // cuando suelto el click del mouse
         window.removeEventListener('mousemove', divMove, true);
     }
     
-    function mouseDown(e){
+    function mouseDown(e){   // cuando presiono el botón del mouse
       window.addEventListener('mousemove', divMove, true);
     }
     
-    function divMove(e){
+    function divMove(e){   
         var div = document.getElementById('scores');
       div.style.position = 'absolute';
       div.style.top = e.clientY + 'px';
@@ -496,10 +496,10 @@ function init() {
       
     }
   }
-  function oohFaceDown(event) {
+  function oohFaceDown(event) {    //remover cara :) y poner cara :o
     event.preventDefault()
     resetBtn.classList.remove('face-button')
-    resetBtn.classList.add('face-ooh')
+    resetBtn.classList.add('face-ooh')   //:o
     event.target.classList.remove('covered')
     event.target.classList.add('clicked')
 
@@ -509,7 +509,7 @@ function init() {
 
 
   }
-  function oohFaceUp(event) {
+  function oohFaceUp(event) {   // cara :o
     resetBtn.classList.remove('face-ooh')
   }
   document.getElementById('rein').addEventListener("click", reset,true)
@@ -524,9 +524,9 @@ function init() {
   cellsStatusInfo.forEach(cells =>
     cells.cell.addEventListener('click', juego))
   cellsStatusInfo.forEach(cells =>
-    cells.cell.addEventListener('mousedown', oohFaceDown))//
+    cells.cell.addEventListener('mousedown', oohFaceDown))
   cellsStatusInfo.forEach(cells =>
-    cells.cell.addEventListener('mouseup', oohFaceUp))  //
+    cells.cell.addEventListener('mouseup', oohFaceUp))  
   cellsStatusInfo.forEach(cells =>
     cells.cell.addEventListener('contextmenu', agregarQuitarBandera))
   resetBtn.addEventListener('click', reset)
@@ -537,7 +537,8 @@ function init() {
     estilo.addEventListener('click', cambioEstilos))
 }
 
-window.addEventListener('DOMContentLoaded', init)
+// cuando cargue la pagina, inicia el juego
+window.addEventListener('DOMContentLoaded', inicio)
 
 
 /**

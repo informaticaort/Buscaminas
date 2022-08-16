@@ -548,7 +548,7 @@ window.addEventListener('DOMContentLoaded', inicio)
  {
    var xhr = new XMLHttpRequest();
             xhr.open('POST', 'http://10.128.20.20/inforunner/insertar.php?name='+name+'&score='+score+'&pc='+0, true);
-            xhr.open('POST', 'https://a-srv-tv-info/inforunner/tv/insertar.php?name='+name+'&score='+score+'&pc='+0, true);
+            //xhr.open('POST', 'https://a-srv-tv-info/inforunner/tv/insertar.php?name='+name+'&score='+score+'&pc='+0, true);
   
            xhr.withCredentials = true;
            xhr.onreadystatechange = function() {
